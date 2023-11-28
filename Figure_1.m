@@ -10,7 +10,6 @@ CombineFuelTypeResults = 1;
 PowerPlantFuel = ["Coal", "Gas", "Oil"];
 saveyear = 0;%saves decommission year; anyother number loads decommission year
 saveresults = 0;
-randomsave = 0;%set to 1 to save MC randomization; zero value  loads MC randomization - section 11 only
 
 years = 2021:2060;
 StartYear = 1900;
@@ -33,8 +32,6 @@ Age_span = 20;% Power plant age range
 
 %plus/minus CF
 CF_span = .25;% Power plant capacity factor range
-
-
 
 load('../Data/Results/CoalAnnualEmissions.mat');
 load ../Data/Results/PowerPlantFinances_byCompany_Coal.mat
@@ -165,13 +162,10 @@ figure()
 bar(1,TotalStrandedAssets_Global_19_ByFuel(:,1),'stacked')
 hold on
 bar(2,TotalStrandedAssets_Global_26_ByFuel(:,1),'stacked')
-% colororder(NewColormap);
-legend({'Coal','Natural Gas','Oil'})
+legend('Coal','Gas','Oil')
 ylim([0 14e12])
-% xlabel('Year')
 ylabel('Stranded Assets (USD $)')
 aY = gca;
-%exportgraphics(aY,'../Plots/Figure - Annual Stranded Assets/AnnualStrandings_byFuel_bar.eps','ContentType','vector');  
 
 TotalStrandedAssets_Global_19_ByFuel =  TotalStrandedAssets_Global_19_ByFuel(:,1);
 TotalStrandedAssets_Global_26_ByFuel =  TotalStrandedAssets_Global_26_ByFuel(:,1);
@@ -211,7 +205,6 @@ Top_Countries_strings(1,1) = {'REST OF WORLD'};
 Top_Countries_strings(2:end,1) = CountryStrings(indx(:,1),1);
 
 
-
 CountryNames = {'Albania', 'Australia', 'Austria', 'Belgium', 'Bosnia-Herzegovina', 'Bulgaria', 'Canada',...
                 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Guam', 'Hungary',...
                 'Iceland', 'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg', 'Malta', 'Montenegro', 'Netherlands', 'New Zealand',...
@@ -231,16 +224,12 @@ US_Assets = CountryassetsUnique19_global(217,1);
 
 figure()
 bar(1,CountryAssets_global19(:,1),'stacked')
-% colororder(NewColormap);
-legend(Top_Countries_strings)
+legend('Rest of the world','China','USA', 'India','Germany')
 ylim([0 14e12])
-% xlabel('Year')
 ylabel('Stranded Assets (USD $)')
-aY = gca;
-%exportgraphics(aY,'../Plots/Figure - Annual Stranded Assets/AnnualStrandings_byCountry_1_9_bar.eps','ContentType','vector');
+
+
 CountryAssets_global19 = CountryAssets_global19(:,1);
-
-
 [~, indx] = maxk(nansum(CountryassetsUnique26_global,2),4);%extracts the top 10
 Top_Countries_assets_global26 = CountryassetsUnique26_global(indx,:);
 RestofCountriesEmissions_global26 = nansum(TotalStrandedAssets_Country_Global_26,1)-nansum(Top_Countries_assets_global26,1);
@@ -252,11 +241,9 @@ Top_Countries_strings(2:end,1) = CountryStrings(indx(:,1),1);
 
 figure()
 bar(1,CountryAssets_global26(:,1),'stacked')
-legend(Top_Countries_strings)
+legend('Rest of the world','China','USA', 'India','Germany')
 ylim([0 14e12])
 ylabel('Stranded Assets (USD $)')
-aY = gca;
-%exportgraphics(aY,'../Plots/Figure - Annual Stranded Assets/AnnualStrandings_byCountry_2_6_bar.eps','ContentType','vector');
 CountryAssets_global26 = CountryAssets_global26(:,1);
 
 
@@ -282,8 +269,8 @@ TotalStrandedAssets_Company_Global_26 = [AnnualStrandedAssetByCompany26_globalpr
 TotalStrandedAssets_Company_Regional_26 = [AnnualStrandedAssetByCompany26_regionalpricing_Coal; AnnualStrandedAssetByCompany26_regionalpricing_Gas; AnnualStrandedAssetByCompany26_regionalpricing_Oil];
 TotalStrandedAssets_Company_Regional_19 = [AnnualStrandedAssetByCompany19_regionalpricing_Coal; AnnualStrandedAssetByCompany19_regionalpricing_Gas; AnnualStrandedAssetByCompany19_regionalpricing_Oil];
 
- CompanyAssetsUnique_global19 = zeros(length(CompanyStrings),40); CompanyAssetsUnique_global26 = zeros(length(CompanyStrings),40);
- CompanyAssetsUnique_regional19 = zeros(length(CompanyStrings),40); CompanyAssetsUnique_regional26 = zeros(length(CompanyStrings),40);
+CompanyAssetsUnique_global19 = zeros(length(CompanyStrings),40); CompanyAssetsUnique_global26 = zeros(length(CompanyStrings),40);
+CompanyAssetsUnique_regional19 = zeros(length(CompanyStrings),40); CompanyAssetsUnique_regional26 = zeros(length(CompanyStrings),40);
  
 
 for  i = 1:length(CompanyStrings)
@@ -312,8 +299,6 @@ bar(1,StrandedAssets(1,:),'stacked')
 legend('Rest','Next 90','Top 10')
 ylim([0 14e12])
 ylabel('Stranded Assets (USD $)')
-aY = gca;
-%exportgraphics(aY,'../Plots/Figure - Annual Stranded Assets/AnnualStrandings_byCompany_1_9_bar.eps','ContentType','vector');
 
 StrandedAssetsbycompany19 = StrandedAssets(1,:);
 
@@ -332,10 +317,3 @@ bar(1,StrandedAssets(1,:),'stacked')
 legend('Rest','Next 90','Top 10')
 ylim([0 14e12])
 ylabel('Stranded Assets (USD $)')
-aY = gca;
-%exportgraphics(aY,'../Plots/Figure - Annual Stranded Assets/AnnualStrandings_byCompany_2_6_bar.eps','ContentType','vector');
-
-StrandedAssetsbycompany26 = StrandedAssets(1,:);
-% save('../Data/Results/figure_4_stats.mat','TotalStrandedAssets_Global_19_ByFuel','TotalStrandedAssets_Global_26_ByFuel','CountryAssets_global19','CountryAssets_global26','StrandedAssetsbycompany19','StrandedAssetsbycompany26')
-
-
