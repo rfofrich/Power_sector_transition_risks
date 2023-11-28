@@ -33,13 +33,13 @@ Age_span = 20;% Power plant age range
 %plus/minus CF
 CF_span = .25;% Power plant capacity factor range
 
-load('../Data/Results/Coal_Plants');
-load('../Data/Results/Coal_Plants_strings');
-load('../Data/Results/CoalCostbyCountry')
-load('../Data/WholeSaleCostofElectricityCoal');
-CarbonTax19 = xlsread('../Data/CarbonTax1_9.xlsx');
-CarbonTax26 = xlsread('../Data/CarbonTax2_6.xlsx');
-load '../Data/Results/CoalColors'
+load('Data/Results/Coal_Plants');
+load('Data/Results/Coal_Plants_strings');
+load('Data/Results/CoalCostbyCountry')
+load('Data/WholeSaleCostofElectricityCoal');
+CarbonTax19 = xlsread('Data/CarbonTax1_9.xlsx');
+CarbonTax26 = xlsread('Data/CarbonTax2_6.xlsx');
+load 'Data/Results/CoalColors'
 
 clear PowerPlantProfits
 
@@ -60,9 +60,9 @@ if saveyear == 1 %ensures not all overaged plants are shut down at once but rath
             DecommissionYear(generator,1) = 2020 + LifeLeft(generator,1);
         end
     end
-    save('../Data/Results/DecommissionYearCoal','DecommissionYear');
+    save('Data/Results/DecommissionYearCoal','DecommissionYear');
 elseif saveyear ~=1
-    load('../Data/Results/DecommissionYearCoal')
+    load('Data/Results/DecommissionYearCoal')
 end
 
 
