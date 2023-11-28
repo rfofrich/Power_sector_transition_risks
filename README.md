@@ -1,6 +1,6 @@
 # Company-specific transition risks in the global power sector
 
-This repository contains scripts and a subset of the data used in the manuscript: "Company-specific transition risks in the global power sector."
+This repository contains scripts and a subset of data used in the manuscript: "Company-specific transition risks in the global power sector."
 
 ## System Requirements
 
