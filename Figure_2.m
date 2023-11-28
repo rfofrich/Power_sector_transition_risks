@@ -35,12 +35,12 @@ Age_span = 20;% Power plant age range
 CF_span = .25;% Power plant capacity factor range
 
 
-load '../Data/Results/PowerPlantFinances_byCompany_Coal'
-load '../Data/Results/PowerPlantFinances_byCountry_Coal'
-load '../Data/Results/CoalAnnualEmissions.mat'
-load ../Data/Results/CoalCompanyCapacity.mat
-load ../Data/Results/CoalRevenue.mat
-load '../Data/Results/colorschemecategoryCoal2'
+load 'Data/Results/PowerPlantFinances_byCompany_Coal'
+load 'Data/Results/PowerPlantFinances_byCountry_Coal'
+load 'Data/Results/CoalAnnualEmissions.mat'
+load Data/Results/CoalCompanyCapacity.mat
+load Data/Results/CoalRevenue.mat
+load 'Data/Results/colorschemecategoryCoal2'
 
 RegionList = {'USA','Latin America','China','Europe',...
     'Middle East and Africa','Asia','Former Soviet','Australia, Canada, New Zealand','India'};
@@ -106,9 +106,9 @@ CommittedEmissions = CommittedEmissions(Indx);
 Coal_company_country_strings =Coal_company_country_strings(Indx);
 Company_RGB_colors = Company_RGB_colors(Indx,:);
 Lifeleft = Lifeleft(Indx,:);
-OilRevenue = cell2mat(struct2cell(load('../Data/Results/revenuebycompany_oil.mat')));
-GasRevenue = cell2mat(struct2cell(load('../Data/Results/revenuebycompany_gas.mat')));
-CoalRevenue = cell2mat(struct2cell(load('../Data/Results/revenuebycompany_coal.mat')));
+OilRevenue = cell2mat(struct2cell(load('Data/Results/revenuebycompany_oil.mat')));
+GasRevenue = cell2mat(struct2cell(load('Data/Results/revenuebycompany_gas.mat')));
+CoalRevenue = cell2mat(struct2cell(load('Data/Results/revenuebycompany_coal.mat')));
 Revenue = [OilRevenue CoalRevenue GasRevenue];
 
 Lifeleft(Lifeleft<=0)=0.75;% ensures historically overaged plants have no remaining life. Shifted from 0 to help with data visualization and prevent data from being plotted on the axis.
