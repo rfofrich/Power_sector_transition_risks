@@ -51,6 +51,9 @@ for gentype = FUEL
         Plants = Operating_data;
         Plants_string = Opr_Strings;
 
+        %Plants data information - (:,1) = nameplate capacity; (:,2) = Age; (:,3) = CO2
+        %intensity; (:,4) = Operating date; (:,5) = Company ID;
+
 
         [UniqueName, ~, idc] = unique(Opr_Strings(:,2));
 
@@ -70,7 +73,7 @@ for gentype = FUEL
             MAX = round(nanmean(FuelSpecific_CapitalCosts)+nanmean(FuelSpecific_CapitalCosts)*.2);
             
             
-            for powerplant = 1:length(Plants)
+            for powerplant = 1:length(Plants) %adds capital cost to younger plants based on historical estimates, older plants have already paid this cost off
                 if Plants(powerplant,2) <=15
                     Plants(powerplant,6) = randi([MIN MAX])*1000;%$/MW
                 elseif Plants(powerplant,2) > 15
@@ -145,7 +148,7 @@ for gentype = FUEL
                 end
             end
 
-
+           
             for powerplant = 1:length(Plants)
                 Plants(powerplant,7) = 8.14;%conversion factor for short ton to MWh
             end
@@ -248,7 +251,11 @@ for gentype = FUEL
             end
                     
                         
-                           
+            %Plants data information - (:,1) = nameplate capacity; (:,2) = Age; (:,3) = CO2
+            %intensity; (:,4) = Operating date; (:,5) = Company ID; (:,6) =
+            %capital cost; (:,7) = fuel to electricity converson factor;
+            %(:,8) O&M costs; (:,11) emissions (tons CO2)
+
             colorschemecategoryCoal = colorschemecategory;
             save('Data/Results/CoalColors','colorschemecategoryCoal');
 
