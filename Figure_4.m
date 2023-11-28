@@ -10,7 +10,7 @@ CombineFuelTypeResults = 1;
 PowerPlantFuel = ["Coal", "Gas", "Oil"];
 saveyear = 0;%saves decommission year; anyother number loads decommission year
 saveresults = 0;
-randomsave = 0;%set to 1 to save MC randomization; zero value  loads MC randomization - section 11 only
+randomsave = 1;%set to 1 to save MC randomization; zero value  loads MC randomization - section 11 only
 
 years = 2021:2060;
 StartYear = 1900;
@@ -27,6 +27,10 @@ DiscountRate = .03;%set to 3 and 7 percent
 %coal assumptions
 mean_coalCF = .85; %Capacity factor; 
 mean_coalLife = 40; %Power plant life;
+mean_GasCF = .85;
+mean_gasLife = 40;
+mean_OilCF = .85;
+mean_oilLife = 40;
 
 %plus/minus age
 Age_span = 20;% Power plant age range
@@ -37,15 +41,15 @@ CF_span = .25;% Power plant capacity factor range
 %vary profits and costs....
 %plot profits(y-axis) and costs(x-axis), stranded
 %assets(z-axis)
-load('../Data/Results/Coal_Plants');
-load('../Data/Results/Coal_Plants_strings');
-load('../Data/Results/CoalCostbyCountry')
-load('../Data/WholeSaleCostofElectricityCoal');
-CarbonTax19 = xlsread('../Data/CarbonTax1_9.xlsx');
-CarbonTax26 = xlsread('../Data/CarbonTax2_6.xlsx');
-load '../Data/Results/CoalColors'
-load('../Data/Results/DecommissionYearCoal')
-load('../Data/Results/OM_Costs_Coal.mat');
+load('Data/Results/Coal_Plants');
+load('Data/Results/Coal_Plants_strings');
+load('Data/Results/CoalCostbyCountry')
+load('Data/WholeSaleCostofElectricityCoal');
+CarbonTax19 = xlsread('Data/CarbonTax1_9.xlsx');
+CarbonTax26 = xlsread('Data/CarbonTax2_6.xlsx');
+load 'Data/Results/CoalColors'
+load('Data/Results/DecommissionYearCoal')
+load('Data/Results/OM_Costs_Coal.mat');
 
 matrixsize = 61;
 
@@ -53,12 +57,11 @@ if randomsave == 1
     MC_values_1 = randi(matrixsize,10000,1);
     MC_values_2 = randi(matrixsize,10000,1);
     MC_values_3 = randi(matrixsize,10000,1);
-    save("../Data/Results/MC_values.mat","MC_values_1","MC_values_2","MC_values_3")
+    save("Data/Results/MC_values.mat","MC_values_1","MC_values_2","MC_values_3")
 elseif randomsave == 0 
-    load("../Data/Results/MC_values.mat");
+    load("Data/Results/MC_values.mat");
 end
    
-
 
 FuelCosts = F_Costs;
 LifeLeft = mean_coalLife - Plants(:,2);
@@ -149,15 +152,15 @@ xlabel('Wholesale Price');
 ylabel('Carbon Tax');
 
 
-load('../Data/Results/Gas_Plants');
-load('../Data/Results/Gas_Plants_strings');
-load('../Data/Results/GasCostbyCountry')
-load('../Data/Results/WholeSaleCostofElectricityGas');
-CarbonTax19 = xlsread('../Data/CarbonTax1_9.xlsx');
-CarbonTax26 = xlsread('../Data/CarbonTax2_6.xlsx');
-load '../Data/Results/GasColors'
-load('../Data/Results/DecommissionYearGas')
-load('../Data/Results/OM_Costs_Gas.mat');
+load('Data/Results/Gas_Plants');
+load('Data/Results/Gas_Plants_strings');
+load('Data/Results/GasCostbyCountry')
+load('Data/Results/WholeSaleCostofElectricityGas');
+CarbonTax19 = xlsread('Data/CarbonTax1_9.xlsx');
+CarbonTax26 = xlsread('Data/CarbonTax2_6.xlsx');
+load 'Data/Results/GasColors'
+load('Data/Results/DecommissionYearGas')
+load('Data/Results/OM_Costs_Gas.mat');
 
 matrixsize = 31;
 
@@ -165,9 +168,9 @@ if randomsave == 1
     MC_values_1 = randi(matrixsize,10000,1);
     MC_values_2 = randi(matrixsize,10000,1);
     MC_values_3 = randi(matrixsize,10000,1);
-    save("../Data/Results/MC_values_Gas.mat","MC_values_1","MC_values_2","MC_values_3")
+    save("Data/Results/MC_values_Gas.mat","MC_values_1","MC_values_2","MC_values_3")
 elseif randomsave == 0 
-    load("../Data/Results/MC_values_Gas.mat");
+    load("Data/Results/MC_values_Gas.mat");
 end
    
 
@@ -261,15 +264,15 @@ xlabel('Wholesale Price');
 ylabel('Carbon Tax');
 
 
-load('../Data/Results/Oil_Plants');
-load('../Data/Results/Oil_Plants_strings');
-load('../Data/Results/OilCostbyCountry')
-load('../Data/Results/WholeSaleCostofElectricityOil');
-CarbonTax19 = xlsread('../Data/CarbonTax1_9.xlsx');
-CarbonTax26 = xlsread('../Data/CarbonTax2_6.xlsx');
-load '../Data/Results/OilColors'
-load('../Data/Results/DecommissionYearOil')
-load('../Data/Results/OM_Costs_Oil.mat');
+load('Data/Results/Oil_Plants');
+load('Data/Results/Oil_Plants_strings');
+load('Data/Results/OilCostbyCountry')
+load('Data/Results/WholeSaleCostofElectricityOil');
+CarbonTax19 = xlsread('Data/CarbonTax1_9.xlsx');
+CarbonTax26 = xlsread('Data/CarbonTax2_6.xlsx');
+load 'Data/Results/OilColors'
+load('Data/Results/DecommissionYearOil')
+load('Data/Results/OM_Costs_Oil.mat');
 
 matrixsize = 31;
 
@@ -277,9 +280,9 @@ if randomsave == 1
     MC_values_1 = randi(matrixsize,10000,1);
     MC_values_2 = randi(matrixsize,10000,1);
     MC_values_3 = randi(matrixsize,10000,1);
-    save("../Data/Results/MC_values_Oil.mat","MC_values_1","MC_values_2","MC_values_3")
+    save("Data/Results/MC_values_Oil.mat","MC_values_1","MC_values_2","MC_values_3")
 elseif randomsave == 0 
-    load("../Data/Results/MC_values_Oil.mat");
+    load("Data/Results/MC_values_Oil.mat");
 end
    
 
