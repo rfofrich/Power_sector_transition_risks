@@ -33,10 +33,10 @@ Age_span = 20;% Power plant age range
 %plus/minus CF
 CF_span = .25;% Power plant capacity factor range
 
-load('../Data/Results/CoalAnnualEmissions.mat');
-load ../Data/Results/PowerPlantFinances_byCompany_Coal.mat
-load ../Data/Results/PowerPlantFinances_byCountry_Coal.mat
-load ../Data/Results/CoalStrandedAssets.mat
+load('Data/Results/CoalAnnualEmissions.mat');
+load Data/Results/PowerPlantFinances_byCompany_Coal.mat
+load Data/Results/PowerPlantFinances_byCountry_Coal.mat
+load Data/Results/CoalStrandedAssets.mat
 Coal_strings = PowerPlantString_ByCountry;
 
 
@@ -45,10 +45,10 @@ PowerPlantFinances_byCountry_Coal = PowerPlantFinances_byCountry;
 PowerPlantFinances_byCompany_Coal(PowerPlantFinances_byCompany_Coal<0) = 0;
 PowerPlantFinances_byCountry_Coal(PowerPlantFinances_byCountry_Coal<0) = 0;
 
-load('../Data/Results/GasAnnualEmissions.mat');
-load ../Data/Results/PowerPlantFinances_byCompany_Gas.mat
-load ../Data/Results/PowerPlantFinances_byCountry_Gas.mat
-load ../Data/Results/GasStrandedAssets.mat
+load('Data/Results/GasAnnualEmissions.mat');
+load Data/Results/PowerPlantFinances_byCompany_Gas.mat
+load Data/Results/PowerPlantFinances_byCountry_Gas.mat
+load Data/Results/GasStrandedAssets.mat
 Gas_strings = PowerPlantString_ByCountry;
 
 PowerPlantFinances_byCompany_Gas = PowerPlantFinances_byCompany;
@@ -56,10 +56,10 @@ PowerPlantFinances_byCountry_Gas = PowerPlantFinances_byCountry;
 PowerPlantFinances_byCompany_Gas(PowerPlantFinances_byCompany_Gas<0) = 0;
 PowerPlantFinances_byCountry_Gas(PowerPlantFinances_byCountry_Gas<0) = 0;
 
-load('../Data/Results/OilAnnualEmissions.mat');
-load ../Data/Results/PowerPlantFinances_byCompany_Oil.mat
-load ../Data/Results/PowerPlantFinances_byCountry_Oil.mat
-load ../Data/Results/OilStrandedAssets.mat
+load('Data/Results/OilAnnualEmissions.mat');
+load Data/Results/PowerPlantFinances_byCompany_Oil.mat
+load Data/Results/PowerPlantFinances_byCountry_Oil.mat
+load Data/Results/OilStrandedAssets.mat
 Oil_strings = PowerPlantString_ByCountry;
 
 PowerPlantFinances_byCompany_Oil = PowerPlantFinances_byCompany;
@@ -163,7 +163,7 @@ bar(1,TotalStrandedAssets_Global_19_ByFuel(:,1),'stacked')
 hold on
 bar(2,TotalStrandedAssets_Global_26_ByFuel(:,1),'stacked')
 legend('Coal','Gas','Oil')
-ylim([0 14e12])
+ylim([0 12e12])
 ylabel('Stranded Assets (USD $)')
 aY = gca;
 
@@ -225,7 +225,7 @@ US_Assets = CountryassetsUnique19_global(217,1);
 figure()
 bar(1,CountryAssets_global19(:,1),'stacked')
 legend('Rest of the world','China','USA', 'India','Germany')
-ylim([0 14e12])
+ylim([0 12e12])
 ylabel('Stranded Assets (USD $)')
 
 
@@ -242,7 +242,7 @@ Top_Countries_strings(2:end,1) = CountryStrings(indx(:,1),1);
 figure()
 bar(1,CountryAssets_global26(:,1),'stacked')
 legend('Rest of the world','China','USA', 'India','Germany')
-ylim([0 14e12])
+ylim([0 12e12])
 ylabel('Stranded Assets (USD $)')
 CountryAssets_global26 = CountryAssets_global26(:,1);
 
@@ -297,7 +297,7 @@ StrandedAssets = [RestStrandedAssets' NextNinety_Assets' TopTen_Assets'];
 figure()
 bar(1,StrandedAssets(1,:),'stacked')
 legend('Rest','Next 90','Top 10')
-ylim([0 14e12])
+ylim([0 12e12])
 ylabel('Stranded Assets (USD $)')
 
 StrandedAssetsbycompany19 = StrandedAssets(1,:);
@@ -315,5 +315,5 @@ StrandedAssets = [RestStrandedAssets' NextNinety_Assets' TopTen_Assets'];
 figure()
 bar(1,StrandedAssets(1,:),'stacked')
 legend('Rest','Next 90','Top 10')
-ylim([0 14e12])
+ylim([0 12e12])
 ylabel('Stranded Assets (USD $)')
