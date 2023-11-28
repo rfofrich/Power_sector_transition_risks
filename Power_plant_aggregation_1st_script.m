@@ -32,10 +32,10 @@ Age_span = 20;% Power plant age range
 %plus/minus CF
 CF_span = .25;% Power plant capacity factor range
 
-Country = readcell('../Data/Countries.xlsx');
-O_M_costs = readcell('../Data/Average_O_M_costs.xlsx');
-Wholesale_Electricity_Costs_strings = readcell('../Data/PriceOfElectricity_Worldbank.xlsx');
-Wholesale_Electricity_Costs = xlsread('../Data/PriceOfElectricity_Worldbank.xlsx');
+Country = readcell('Data/Countries.xlsx');
+O_M_costs = readcell('Data/Average_O_M_costs.xlsx');
+Wholesale_Electricity_Costs_strings = readcell('Data/PriceOfElectricity_Worldbank.xlsx');
+Wholesale_Electricity_Costs = xlsread('Data/PriceOfElectricity_Worldbank.xlsx');
 Wholesale_Electricity_Costs = Wholesale_Electricity_Costs(2:end,7)*1000./100;%retrieves data and converts it to KWh and to U.S. dollars
 
 for i = 2:length(Wholesale_Electricity_Costs_strings)
@@ -45,7 +45,7 @@ end
 for gentype = FUEL
         clear Plants
 
-        [Operating_data, Opr_Strings, Countries] = retrieve_plant_data(['../Data/' PowerPlantFuel{gentype} '.xlsx']);
+        [Operating_data, Opr_Strings, Countries] = retrieve_plant_data(['Data/' PowerPlantFuel{gentype} '.xlsx']);
 
         Countries = unique(Countries);
         Plants = Operating_data;
@@ -54,8 +54,8 @@ for gentype = FUEL
 
         [UniqueName, ~, idc] = unique(Opr_Strings(:,2));
 
-        CapitalCosts_strings = readcell('../Data/Capital_costs_Data_Power_sectors.xlsx');
-        CapitalCosts = xlsread('../Data/Capital_costs_Data_Power_sectors.xlsx');
+        CapitalCosts_strings = readcell('Data/Capital_costs_Data_Power_sectors.xlsx');
+        CapitalCosts = xlsread('Data/Capital_costs_Data_Power_sectors.xlsx');
 
 
         if gentype == 1
@@ -93,10 +93,10 @@ for gentype = FUEL
                 end
             end
             
-            save('../Data/WholeSaleCostofElectricityCoal','WholeSaleCostofElectricity');
+            save('Data/WholeSaleCostofElectricityCoal','WholeSaleCostofElectricity');
             
-            FuelCosts = xlsread('../Data/CoalCosts.xlsx');%$ Cost of per unit fuel 
-            Fuel_strings = readcell('../Data/CoalCosts.xlsx');
+            FuelCosts = xlsread('Data/CoalCosts.xlsx');%$ Cost of per unit fuel 
+            Fuel_strings = readcell('Data/CoalCosts.xlsx');
             Fuel_strings = Fuel_strings(:,1:2);
             
            for i = 1:length(FuelCosts)
@@ -250,14 +250,12 @@ for gentype = FUEL
                         
                            
             colorschemecategoryCoal = colorschemecategory;
-            save('../Data/Results/CoalColors','colorschemecategoryCoal');
+            save('Data/Results/CoalColors','colorschemecategoryCoal');
 
-            save('../Data/Results/Coal_Plants','Plants');
-            save('../Data/Results/Coal_Plants_strings','Plants_string');
-            save('../Data/Results/CoalCostbyCountry','F_Costs');
-            
-
-       
+            save('Data/Results/Coal_Plants','Plants');
+            save('Data/Results/Coal_Plants_strings','Plants_string');
+            save('Data/Results/CoalCostbyCountry','F_Costs');
+                   
         end
 end%gentype
 
