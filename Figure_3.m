@@ -36,10 +36,10 @@ CF_span = .25;% Power plant capacity factor range
 
 
 
-load '../Data/Results/PowerPlantFinances_byCompany_Coal'
-load '../Data/Results/CoalAnnualEmissions.mat'
-load '../Data/Results/colorschemecategoryCoal2'
-load ../Data/Results/CoalCompanyCapacity.mat
+load 'Data/Results/PowerPlantFinances_byCompany_Coal'
+load 'Data/Results/CoalAnnualEmissions.mat'
+load 'Data/Results/colorschemecategoryCoal2'
+load Data/Results/CoalCompanyCapacity.mat
 
 RegionList = {'USA','Latin America','China','Europe',...
         'Middle East and Africa','Asia','Former Soviet','Australia, Canada, New Zealand','India'};
@@ -109,13 +109,13 @@ cx = gca;
 
 
 
-load('../Data/Results/EmissionsPerStrandedAssets_coal.mat')
+load('Data/Results/EmissionsPerStrandedAssets_coal.mat')
 EmissionsbyCompany_coal = EmissionsbyCompany;
 
-load('../Data/Results/EmissionsPerStrandedAssets_max_coal.mat')
+load('Data/Results/EmissionsPerStrandedAssets_max_coal.mat')
 EmissionsPerStrandedAssets_coal_max = EmissionsPerStrandedAssets; 
 
-load('../Data/Results/EmissionsPerStrandedAssets_min_coal.mat')
+load('Data/Results/EmissionsPerStrandedAssets_min_coal.mat')
 EmissionsPerStrandedAssets_coal_min = EmissionsPerStrandedAssets;
 
 EmissionsPerStrandedAssets_coal_average = (EmissionsPerStrandedAssets_coal_min+EmissionsPerStrandedAssets_coal_max)/2;
@@ -136,13 +136,13 @@ ax = gca;
 
 
 
-load('../Data/Results/EmissionsPerStrandedAssets_oil.mat')
+load('Data/Results/EmissionsPerStrandedAssets_oil.mat')
 EmissionsbyCompany_oil = EmissionsbyCompany;
 
-load('../Data/Results/EmissionsPerStrandedAssets_max_oil.mat')
+load('Data/Results/EmissionsPerStrandedAssets_max_oil.mat')
 EmissionsPerStrandedAssets_oil_max = EmissionsPerStrandedAssets; 
 
-load('../Data/Results/EmissionsPerStrandedAssets_min_oil.mat')
+load('Data/Results/EmissionsPerStrandedAssets_min_oil.mat')
 EmissionsPerStrandedAssets_oil_min = EmissionsPerStrandedAssets;
 
 EmissionsPerStrandedAssets_oil_average = (EmissionsPerStrandedAssets_oil_min+EmissionsPerStrandedAssets_oil_max)/2;
@@ -162,13 +162,13 @@ ax = gca;
 
 
 
-load('../Data/Results/EmissionsPerStrandedAssets_gas.mat')
+load('Data/Results/EmissionsPerStrandedAssets_gas.mat')
 EmissionsbyCompany_gas = EmissionsbyCompany;
 
-load('../Data/Results/EmissionsPerStrandedAssets_max_gas.mat')
+load('Data/Results/EmissionsPerStrandedAssets_max_gas.mat')
 EmissionsPerStrandedAssets_gas_max = EmissionsPerStrandedAssets; 
 
-load('../Data/Results/EmissionsPerStrandedAssets_min_gas.mat')
+load('Data/Results/EmissionsPerStrandedAssets_min_gas.mat')
 EmissionsPerStrandedAssets_gas_min = EmissionsPerStrandedAssets;
 
 EmissionsPerStrandedAssets_gas_average = (EmissionsPerStrandedAssets_gas_min+EmissionsPerStrandedAssets_gas_max)/2;
