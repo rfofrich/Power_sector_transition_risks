@@ -65,8 +65,12 @@ elseif saveyear ~=1
     load('Data/Results/DecommissionYearCoal')
 end
 
+%Plants data information - (:,1) = nameplate capacity; (:,2) = Age; (:,3) = CO2
+%intensity; (:,4) = Operating date; (:,5) = Company ID; (:,6) =
+%capital cost; (:,7) = fuel to electricity converson factor;
+%(:,8) O&M costs; (:,11) emissions (tons CO2) 
 
-for generator = 1:length(Plants)%%
+for generator = 1:length(Plants)
     PowerPlantProfits(generator,1) = (Plants(generator,1).*mean_coalCF.*AnnualHours.*WholeSaleCostofElectricity(generator,1))...%gains
     -(Plants(generator,1).*mean_coalCF.*AnnualHours.*((FuelCosts(generator,1))./Plants(generator,7)))...%costs
     - Plants(generator,8)*Plants(generator,1) - Plants(generator,6)*Plants(generator,1).*DiscountRate;
